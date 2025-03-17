@@ -121,6 +121,7 @@ animations = [ {
 } ]
 
 [node name="Player" type="Node2D"]
+scale = Vector2( 1.5, 1.5 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
