@@ -25,6 +25,7 @@ window/stretch/aspect="keep"
 [global]
 
 anti=false
+export=false
 
 [gui]
 
