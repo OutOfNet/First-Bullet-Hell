@@ -1,9 +1,5 @@
 extends KinematicBody2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 export var speed = 300
 export var fall_acceleration = 1125
 const jump_force = 400
@@ -40,10 +36,10 @@ func _input(_event):
 func _physics_process(delta):
 	direction = Input.get_axis("left_input", "right_input")
 	
-	# Handles player animations (please don't call me yandere dev i am NOT into kids)
-	if velocity.y == 0 && velocity.x == 0:
+	# Handles player animations (if else, if else, if else...)
+	if (velocity.y <= 0.0001 && velocity.y >= -0.0001) && velocity.x == 0:
 		$AnimatedSprite.play("idle")
-	elif velocity.x != 0 && velocity.y == 0:
+	elif velocity.x != 0 && (velocity.y <= 0.0001 && velocity.y >= -0.0001):
 		$AnimatedSprite.play("run")
 	elif velocity.y != 0:
 		$AnimatedSprite.play("mid_air")
