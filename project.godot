@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="First_Bullet_Hell"
-run/main_scene="res://Scenes/Levels/Baseplate/Baseplate.tscn"
+run/main_scene="res://scenes/levels/baseplate/baseplate.tscn"
 
 [display]
 

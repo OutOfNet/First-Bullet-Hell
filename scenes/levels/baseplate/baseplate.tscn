@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/game_camera/game_camera.gd" type="Script" id=2]
+[ext_resource path="res://scenes/attacks/bullet.tscn" type="PackedScene" id=3]
+
+[sub_resource type="LineShape2D" id=1]
+normal = Vector2( 0, -20 )
+
+[node name="Baseplate" type="Node2D"]
+
+[node name="ScreenBorder" type="StaticBody2D" parent="."]
+position = Vector2( 0, -219 )
+scale = Vector2( -1.46461, -1.46461 )
+
+[node name="Polygon2D" type="Polygon2D" parent="ScreenBorder"]
+position = Vector2( 0.682775, 3.05176e-05 )
+scale = Vector2( 2, 1 )
+color = Color( 0.498039, 0.498039, 0.498039, 1 )
+polygon = PoolVector2Array( -92, 4, 92, 4, 92, -210, -92, -210, -92, -4, -89, -4, -89, -200, 89, -200, 89, -4, -92, -4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ScreenBorder"]
+position = Vector2( 0.682776, 0 )
+scale = Vector2( 2, 1 )
+build_mode = 1
+polygon = PoolVector2Array( -150, 100, 150, 100, 150, -295, -150, -295, -150, -4, -89, -4.001, -89, -200, 89, -200, 89, -4, -150, -4 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -29 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -140 )
+current = true
+zoom = Vector2( 0.75, 0.75 )
+script = ExtResource( 2 )
+
+[node name="bullet" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4, -428 )
+
+[node name="kill_zone" type="Area2D" parent="."]
+position = Vector2( -1, 640 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kill_zone"]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="kill_zone" to="Player" method="_on_kill_zone_body_entered"]
