@@ -10,3 +10,6 @@ Fixed a bug where the "mid_air" animation would play even if the player was on t
 ## Debug feature(s)
 Added a text that floats above the player indicating its x and y velocities respectively (which allowed me to find out about the aforementionned rounding error, as it displayed -0.000004 on the vertical velocity).
 Added a health counter to test the functionnality of damage sources.
+# Changes in progress
+## Seeking projectile
+Currently working on a seeking projectile.
